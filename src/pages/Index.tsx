@@ -14,11 +14,6 @@ const Index = () => {
     <HabitProvider>
       <div className="min-h-screen flex flex-col bg-habit-background">
         <div className="container py-6">
-          <header className="mb-6">
-            <h1 className="text-3xl font-bold mb-2">Groove & Glow Habit Tracker</h1>
-            <p className="text-muted-foreground">Track your habits, earn rewards, build a better you.</p>
-          </header>
-          
           <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-6">
             <aside className="space-y-6">
               <ProfileCard />

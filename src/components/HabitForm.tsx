@@ -52,7 +52,7 @@ export const HabitForm: React.FC<HabitFormProps> = ({ initialValues, onClose }) 
       name,
       description,
       icon,
-      frequency: frequency as 'daily' | 'weekly',
+      frequency,
       color
     };
     
@@ -127,7 +127,7 @@ export const HabitForm: React.FC<HabitFormProps> = ({ initialValues, onClose }) 
             <Label htmlFor="frequency">Frequency</Label>
             <Select 
               value={frequency} 
-              onValueChange={(value) => setFrequency(value)}
+              onValueChange={(value: 'daily' | 'weekly') => setFrequency(value)}
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select frequency" />
