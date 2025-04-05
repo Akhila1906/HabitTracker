@@ -1,10 +1,12 @@
 
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ThumbsUp, MessageSquare, Share2, Award, Smile, Heart } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
+import { FaFireAlt } from "react-icons/fa";
 
 const communityPosts = [
   {
@@ -49,6 +51,30 @@ const communityPosts = [
 ];
 
 const Community = () => {
+
+  const [posts, setPosts] = useState(communityPosts);
+  const [newPost, setNewPost] = useState("");
+
+  const handlePost = () => {
+    if (!newPost.trim()) return;
+
+    const newEntry = {
+      id: posts.length + 1,
+      user: {
+        name: "You",
+        avatar: "https://i.pravatar.cc/150?img=3",
+        level: 5,
+      },
+      timestamp: "Just now",
+      content: newPost,
+      likes: 0,
+      comments: 0,
+      achievements: [],
+    };
+    setPosts([newEntry, ...posts]);
+    setNewPost(""); // Clear textarea
+  };
+
   return (
     <div className="min-h-screen bg-habit-background">
       <div className="container py-8">
@@ -68,11 +94,13 @@ const Community = () => {
                   </Avatar>
                   <div className="flex-1">
                     <textarea 
+                     value={newPost}
+                     onChange={(e) => setNewPost(e.target.value)}
                       className="min-h-[120px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" 
                       placeholder="Share your habit journey..."
                     />
                     <div className="mt-4 flex justify-end">
-                      <Button>
+                      <Button onClick={handlePost}>
                         Share Update
                       </Button>
                     </div>
@@ -81,7 +109,7 @@ const Community = () => {
               </CardContent>
             </Card>
             
-            {communityPosts.map(post => (
+            {posts.map(post => (
               <Card key={post.id} className="bg-white dark:bg-card border border-border">
                 <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
@@ -156,7 +184,7 @@ const Community = () => {
                       </div>
                     </div>
                     <div className="flex items-center text-sm">
-                      <Heart className="h-4 w-4 mr-1 text-red-500" />
+                    <FaFireAlt className="h-4 w-4 mr-1 text-red-500" />
                       <span>{achiever.streak} day streak</span>
                     </div>
                   </div>

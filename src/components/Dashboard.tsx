@@ -5,8 +5,11 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/types/habit';
 import { format } from 'date-fns';
 
+
 export const Dashboard: React.FC = () => {
   const { userProfile, habits } = useHabits();
+  // const { user, isSignedIn } = useUser();
+
   
   const totalHabits = habits.length;
   const todayStr = format(new Date(), 'yyyy-MM-dd');
@@ -26,6 +29,20 @@ export const Dashboard: React.FC = () => {
   return (
     <div className="w-full space-y-6">
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="habit-card">
+          <h3 className="text-xl font-semibold mb-2">Overall Streak</h3>
+          <p className="text-muted-foreground mb-4">
+            {completedToday} of {totalHabits} habits completed
+          </p>
+          <div className="space-y-2">
+            <div className="flex justify-between">
+              <span className="text-sm font-medium">Progress</span>
+              <span className="text-sm font-medium">{completionPercentage}%</span>
+            </div>
+            <Progress value={completionPercentage} className="h-2 bg-habit-background" />
+          </div>
+        </div>
+        
         <div className="habit-card">
           <h3 className="text-xl font-semibold mb-2">Today's Progress</h3>
           <p className="text-muted-foreground mb-4">

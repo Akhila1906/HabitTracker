@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Home, Users, Award, LogIn, Coffee } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
+import { SignedIn ,SignedOut, SignOutButton} from '@clerk/clerk-react';
 
 interface User {
   id: string;
@@ -30,20 +31,21 @@ const Navbar = () => {
   
   useEffect(() => {
     // Check if user is logged in
-    const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    const demoMode = localStorage.getItem('isDemoUser') === 'true';
+    // const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    // const demoMode = localStorage.getItem('isDemoUser') === 'true';
     
-    setIsLoggedIn(loggedIn);
-    setIsDemoUser(demoMode);
+    // setIsLoggedIn(loggedIn);
+    // setIsDemoUser(demoMode);
     
     // Get user data if logged in
-    if (loggedIn) {
+    if (SignedIn) {
       const userData = localStorage.getItem('user');
       if (userData) {
         setUser(JSON.parse(userData));
       }
     }
   }, []);
+
   
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
@@ -58,13 +60,16 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background">
       <div className="container flex h-16 items-center justify-between">
+      <Link to="/">
         <div className="flex items-center gap-2">
-          <Award className="h-6 w-6 text-primary" />
-          <span className="text-xl font-bold">Groove & Glow</span>
+          <Award className="h-12 w-12 text-primary" />
+          <span className="text-4xl font-bold">ReFrame</span>
         </div>
+        </Link>
         
         <NavigationMenu>
           <NavigationMenuList>
+            <SignedIn>
             <NavigationMenuItem>
               <Link to="/">
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -81,8 +86,8 @@ const Navbar = () => {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
-            
-            {isLoggedIn && user ? (
+            </SignedIn>
+            {/* {isLoggedIn && user ? (
               <NavigationMenuItem>
                 <NavigationMenuTrigger>
                   <Avatar className="h-8 w-8 mr-2">
@@ -138,7 +143,32 @@ const Navbar = () => {
                   </Link>
                 </Button>
               </NavigationMenuItem>
-            )}
+            )} */}
+          <NavigationMenuItem>
+            {/* <button> */}
+              <SignedIn>
+                <Link to="/profile">
+                  <Button variant="outline" className="w-full justify-start">
+                    Profile
+                  </Button>
+                </Link>
+              </SignedIn>
+              <SignedOut>
+                <Link to="/login">
+                  <Button variant="outline" className="w-full justify-start">
+                    Login
+                  </Button>
+                </Link>
+              </SignedOut>
+            {/* </button> */}
+            </NavigationMenuItem>
+            <SignedIn>
+              <NavigationMenuItem>
+              {/* <Button> */}
+                <SignOutButton redirectUrl='/login'/>
+              {/* </Button> */}
+              </NavigationMenuItem>
+            </SignedIn>
           </NavigationMenuList>
         </NavigationMenu>
       </div>

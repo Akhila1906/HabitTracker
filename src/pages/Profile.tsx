@@ -16,7 +16,8 @@ import { toast } from "sonner";
 import { Edit, LogOut, Users, Coffee } from 'lucide-react';
 import { FollowersList } from '@/components/FollowersList';
 import { HabitList } from '@/components/HabitList';
-
+import {SignOutButton} from '@clerk/clerk-react'
+ 
 // Mock data for demo purposes
 const mockFollowers = [
   { id: '1', username: 'jane_doe', avatarUrl: null },
@@ -197,6 +198,7 @@ const Profile = () => {
           <FollowersList users={mockFollowing} emptyMessage="Not following anyone yet" />
         </DialogContent>
       </Dialog>
+
     </div>
   );
 };
