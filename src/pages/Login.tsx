@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { LogIn, Mail, Lock, User } from 'lucide-react';
+import { LogIn, Mail, Lock, User, Coffee } from 'lucide-react';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -62,6 +62,24 @@ const Login = () => {
     toast.info('Google login would be implemented with Supabase');
   };
   
+  const handleDemoLogin = () => {
+    setIsLoading(true);
+    
+    // Set demo user data
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('isDemoUser', 'true');
+    localStorage.setItem('user', JSON.stringify({
+      id: 'demo-123',
+      email: 'demo@example.com',
+      username: 'DemoUser',
+      avatarUrl: null
+    }));
+    
+    toast.success('Logged in as demo user');
+    setIsLoading(false);
+    navigate('/');
+  };
+
   return (
     <div className="container flex items-center justify-center min-h-[calc(100vh-4rem)]">
       <Card className="w-full max-w-md">
@@ -129,6 +147,14 @@ const Login = () => {
                   onClick={handleGoogleLogin}
                 >
                   <LogIn className="mr-2 h-4 w-4" /> Login with Google
+                </Button>
+                <Button 
+                  variant="secondary" 
+                  type="button" 
+                  className="w-full mt-2" 
+                  onClick={handleDemoLogin}
+                >
+                  <Coffee className="mr-2 h-4 w-4" /> Try as Demo User
                 </Button>
               </CardFooter>
             </form>
@@ -206,6 +232,14 @@ const Login = () => {
                   onClick={handleGoogleLogin}
                 >
                   <LogIn className="mr-2 h-4 w-4" /> Sign up with Google
+                </Button>
+                <Button 
+                  variant="secondary" 
+                  type="button" 
+                  className="w-full mt-2" 
+                  onClick={handleDemoLogin}
+                >
+                  <Coffee className="mr-2 h-4 w-4" /> Try as Demo User
                 </Button>
               </CardFooter>
             </form>

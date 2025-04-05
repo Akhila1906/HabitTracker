@@ -12,7 +12,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Home, Users, Award, LogIn } from 'lucide-react';
+import { Home, Users, Award, LogIn, Coffee } from 'lucide-react';
+import { Badge } from "@/components/ui/badge";
 
 interface User {
   id: string;
@@ -24,12 +25,16 @@ interface User {
 const Navbar = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isDemoUser, setIsDemoUser] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   
   useEffect(() => {
     // Check if user is logged in
     const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const demoMode = localStorage.getItem('isDemoUser') === 'true';
+    
     setIsLoggedIn(loggedIn);
+    setIsDemoUser(demoMode);
     
     // Get user data if logged in
     if (loggedIn) {
@@ -42,8 +47,10 @@ const Navbar = () => {
   
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('isDemoUser');
     localStorage.removeItem('user');
     setIsLoggedIn(false);
+    setIsDemoUser(false);
     setUser(null);
     navigate('/login');
   };
@@ -84,13 +91,24 @@ const Navbar = () => {
                       {user.username.charAt(0).toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
-                  Profile
+                  {user.username}
+                  {isDemoUser && (
+                    <Badge variant="outline" className="ml-2 bg-amber-100 text-amber-800 hover:bg-amber-100">
+                      <Coffee className="h-3 w-3 mr-1" />
+                      Demo
+                    </Badge>
+                  )}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="grid w-[200px] gap-3 p-4">
                     <div className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                       <div className="text-sm font-medium leading-none">
                         {user.username}
+                        {isDemoUser && (
+                          <Badge variant="outline" className="ml-2 bg-amber-100 text-amber-800 hover:bg-amber-100">
+                            Demo
+                          </Badge>
+                        )}
                       </div>
                       <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                         {user.email}

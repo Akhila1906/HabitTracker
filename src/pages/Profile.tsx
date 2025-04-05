@@ -11,8 +11,9 @@ import {
   DialogHeader, 
   DialogTitle 
 } from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
-import { Edit, LogOut, Users } from 'lucide-react';
+import { Edit, LogOut, Users, Coffee } from 'lucide-react';
 import { FollowersList } from '@/components/FollowersList';
 import { HabitList } from '@/components/HabitList';
 
@@ -40,16 +41,21 @@ type User = {
 const Profile = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
+  const [isDemoUser, setIsDemoUser] = useState(false);
   const [isFollowersOpen, setIsFollowersOpen] = useState(false);
   const [isFollowingOpen, setIsFollowingOpen] = useState(false);
   
   useEffect(() => {
     // Check if user is logged in
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const demoMode = localStorage.getItem('isDemoUser') === 'true';
+    
     if (!isLoggedIn) {
       navigate('/login');
       return;
     }
+    
+    setIsDemoUser(demoMode);
     
     // Get user data
     const userData = localStorage.getItem('user');
@@ -60,6 +66,7 @@ const Profile = () => {
   
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('isDemoUser');
     localStorage.removeItem('user');
     toast.success('Logged out successfully');
     navigate('/login');
@@ -85,7 +92,13 @@ const Profile = () => {
                 
                 <div>
                   <h2 className="text-xl font-bold">{user.username}</h2>
-                  <p className="text-sm text-muted-foreground">{user.email}</p>
+                  {isDemoUser && (
+                    <Badge variant="outline" className="ml-2 bg-amber-100 text-amber-800 hover:bg-amber-100">
+                      <Coffee className="h-3 w-3 mr-1" />
+                      Demo Account
+                    </Badge>
+                  )}
+                  <p className="text-sm text-muted-foreground mt-1">{user.email}</p>
                 </div>
                 
                 <div className="flex gap-4 w-full">
