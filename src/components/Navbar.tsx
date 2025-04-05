@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
@@ -14,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Home, Users, Award, LogIn, Coffee } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
+import { FaRegMap } from "react-icons/fa";
 import { SignedIn ,SignedOut, SignOutButton,UserButton} from '@clerk/clerk-react';
 
 interface User {
@@ -158,14 +158,15 @@ const Navbar = () => {
               </SignedOut>
             {/* </button> */}
             </NavigationMenuItem>
-            <SignedIn>
-              <NavigationMenuItem>
-              <Button>
-                <SignOutButton redirectUrl='/login'/>
-              </Button>
-              </NavigationMenuItem>
-            </SignedIn>
-          </NavigationMenuList>
+            <NavigationMenuItem>
+              <Link to="/map">
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <FaRegMap className="mr-2 h-4 w-4" />
+                  Maps
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+           </NavigationMenuList>
         </NavigationMenu>
       </div>
     </header>

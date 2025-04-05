@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Auth from "./pages/AuthPage";
+import Maps from "./pages/Maps";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => {
                 <Route path="/community" element={<Community />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/login" element={<Auth />} />
+                <Route path="/map" element={<Maps />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
