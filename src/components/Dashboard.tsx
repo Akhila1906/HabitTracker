@@ -1,10 +1,8 @@
-
 import React from 'react';
 import { useHabits } from '@/contexts/HabitContext';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/types/habit';
 import { format } from 'date-fns';
-
 
 export const Dashboard: React.FC = () => {
   const { userProfile, habits } = useHabits();

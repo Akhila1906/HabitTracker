@@ -164,9 +164,9 @@ const Navbar = () => {
             </NavigationMenuItem>
             <SignedIn>
               <NavigationMenuItem>
-              {/* <Button> */}
+              <Button>
                 <SignOutButton redirectUrl='/login'/>
-              {/* </Button> */}
+              </Button>
               </NavigationMenuItem>
             </SignedIn>
           </NavigationMenuList>
