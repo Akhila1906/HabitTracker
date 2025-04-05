@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Home, Users, Award, LogIn, Coffee } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
-import { SignedIn ,SignedOut, SignOutButton} from '@clerk/clerk-react';
+import { SignedIn ,SignedOut, SignOutButton,UserButton} from '@clerk/clerk-react';
 
 interface User {
   id: string;
@@ -147,11 +147,7 @@ const Navbar = () => {
           <NavigationMenuItem>
             {/* <button> */}
               <SignedIn>
-                <Link to="/profile">
-                  <Button variant="outline" className="w-full justify-start">
-                    Profile
-                  </Button>
-                </Link>
+                <UserButton/>
               </SignedIn>
               <SignedOut>
                 <Link to="/login">

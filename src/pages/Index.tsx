@@ -11,7 +11,6 @@ import { useUser } from "@clerk/clerk-react";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
-  const { user, isSignedIn } = useUser();
 
   
   return (
