@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -33,7 +32,7 @@ const Login = () => {
       
       toast.success('Logged in successfully');
       setIsLoading(false);
-      navigate('/');
+      navigate('/profile');
     }, 1000);
   };
   
@@ -54,7 +53,7 @@ const Login = () => {
       
       toast.success('Account created successfully');
       setIsLoading(false);
-      navigate('/');
+      navigate('/profile');
     }, 1000);
   };
 
@@ -77,7 +76,7 @@ const Login = () => {
     
     toast.success('Logged in as demo user');
     setIsLoading(false);
-    navigate('/');
+    navigate('/profile');
   };
 
   return (

@@ -83,6 +83,7 @@ const Profile = () => {
           <Card>
             <CardContent className="p-6">
               <div className="flex flex-col items-center justify-center text-center space-y-4">
+                {/* User avatar and details */}
                 <Avatar className="h-24 w-24">
                   <AvatarImage src={user.avatarUrl || undefined} alt={user.username} />
                   <AvatarFallback className="text-2xl font-bold">
@@ -101,6 +102,7 @@ const Profile = () => {
                   <p className="text-sm text-muted-foreground mt-1">{user.email}</p>
                 </div>
                 
+                {/* Followers and Following counts */}
                 <div className="flex gap-4 w-full">
                   <Button 
                     className="flex-1" 
@@ -125,6 +127,7 @@ const Profile = () => {
                   </Button>
                 </div>
                 
+                {/* Profile actions */}
                 <div className="flex gap-2 w-full">
                   <Button className="flex-1" variant="outline">
                     <Edit className="mr-2 h-4 w-4" />
@@ -145,6 +148,7 @@ const Profile = () => {
           </Card>
         </aside>
         
+        {/* Main content area */}
         <main>
           <Tabs defaultValue="habits">
             <TabsList className="w-full grid grid-cols-2 mb-6">
