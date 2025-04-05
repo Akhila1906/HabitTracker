@@ -3,9 +3,13 @@ import React from 'react';
 import { useHabits } from '@/contexts/HabitContext';
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent } from '@/components/ui/card';
+import { useUser } from "@clerk/clerk-react";
+
 
 export const ProfileCard: React.FC = () => {
   const { userProfile } = useHabits();
+  const { user, isSignedIn } = useUser();
+
   
   const experienceToNextLevel = userProfile.level * 100;
   const experiencePercentage = Math.round((userProfile.experience / experienceToNextLevel) * 100);
@@ -15,9 +19,9 @@ export const ProfileCard: React.FC = () => {
       <CardContent className="p-6">
         <div className="flex flex-col items-center justify-center text-center space-y-2">
           <div className="flex items-center justify-center h-16 w-16 rounded-full border-4 border-white bg-primary text-white text-xl font-bold">
-            {userProfile.username.charAt(0)}
+            {userProfile.username.charAt(0).toUpperCase()}
           </div>
-          <h3 className="font-bold text-lg">{userProfile.username}</h3>
+          <h3 className="font-bold text-lg">{user.firstName}</h3>
           <div className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-sm font-medium">
             Level {userProfile.level}
           </div>

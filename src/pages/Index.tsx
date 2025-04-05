@@ -6,9 +6,13 @@ import { HabitList } from '@/components/HabitList';
 import { Dashboard } from '@/components/Dashboard';
 import { ProfileCard } from '@/components/ProfileCard';
 import { Toaster } from '@/components/ui/sonner';
+import { useUser } from "@clerk/clerk-react";
+
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
+  const { user, isSignedIn } = useUser();
+
   
   return (
     <HabitProvider>
