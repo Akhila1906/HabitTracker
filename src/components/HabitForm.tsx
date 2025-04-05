@@ -38,7 +38,7 @@ export const HabitForm: React.FC<HabitFormProps> = ({ initialValues, onClose }) 
   const [name, setName] = React.useState(initialValues?.name || '');
   const [description, setDescription] = React.useState(initialValues?.description || '');
   const [icon, setIcon] = React.useState(initialValues?.icon || '🏃‍♂️');
-  const [frequency, setFrequency] = React.useState(initialValues?.frequency || 'daily');
+  const [frequency, setFrequency] = React.useState<'daily' | 'weekly'>(initialValues?.frequency || 'daily');
   const [color, setColor] = React.useState(initialValues?.color || '#9b87f5');
   
   const handleSubmit = (e: React.FormEvent) => {
