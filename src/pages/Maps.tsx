@@ -57,7 +57,7 @@ const Map: React.FC = () => {
           data.lat,
           data.lng
         );
-        if (distance < 5) {
+        if (distance < 25) {
           nearby.push({ id: docSnap.id, lat: data.lat, lng: data.lng });
         }
       });

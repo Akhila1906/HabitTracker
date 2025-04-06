@@ -14,6 +14,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Home, Users, Award, LogIn, Coffee } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { FaRegMap } from "react-icons/fa";
+import  ThemeToggleButton  from "@/providers/ThemeToggleButton";
 import { SignedIn ,SignedOut, SignOutButton,UserButton} from '@clerk/clerk-react';
 
 interface User {
@@ -166,6 +167,9 @@ const Navbar = () => {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
+            {/* <NavigationMenuItem> */}
+              <ThemeToggleButton></ThemeToggleButton>
+            {/* </NavigationMenuItem> */}
            </NavigationMenuList>
         </NavigationMenu>
       </div>

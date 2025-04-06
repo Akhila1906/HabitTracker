@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Auth from "./pages/AuthPage";
 import Maps from "./pages/Maps";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => {
   const { isSignedIn } = useUser(); // Hook is valid here
 
   return (
+    <ThemeProvider defaultTheme="light">
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
@@ -41,6 +43,7 @@ const App = () => {
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
+    </ThemeProvider>
   );
 };
 
