@@ -72,6 +72,10 @@ export const Dashboard: React.FC = () => {
       
       <section>
         <h3 className="text-xl font-semibold mb-4">Achievements</h3>
+        <div className="bg-background text-text p-4 rounded-md shadow-md">
+          <h2 className="text-xl font-bold">Achievements</h2>
+          <p>Track your progress here!</p>
+        </div>
         {unlockedBadges.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {unlockedBadges.map((badge) => (

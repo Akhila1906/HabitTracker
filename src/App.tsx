@@ -21,28 +21,28 @@ const App = () => {
 
   return (
     <ThemeProvider defaultTheme="light">
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <div className="min-h-screen flex flex-col">
-            <Navbar />
-            <main className="flex-1">
-              <Routes>
-                <Route path="/" element={isSignedIn ? <Index /> : <Auth />} />
-                <Route path="/community" element={<Community />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/login" element={<Auth />} />
-                <Route path="/map" element={<Maps />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
-          </div>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <div className="min-h-screen bg-background flex flex-col">
+              <Navbar />
+              <main className="flex-1">
+                <Routes>
+                  <Route path="/" element={isSignedIn ? <Index /> : <Auth />} />
+                  <Route path="/community" element={<Community />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/login" element={<Auth />} />
+                  <Route path="/map" element={<Maps />} />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+            </div>
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 };

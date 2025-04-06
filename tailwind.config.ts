@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -23,7 +22,11 @@ export default {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
-				background: 'hsl(var(--background))',
+				background: {
+					DEFAULT: 'hsl(var(--background))',
+					light: '#ffffff', // Light mode background
+					dark: '#1a202c',  // Dark mode background
+				},
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
@@ -71,7 +74,11 @@ export default {
 					warning: '#fbbf24',
 					danger: '#f87171',
 					background: '#f8f7ff'
-				}
+				},
+				text: {
+					light: '#000000', // Light mode text
+					dark: '#ffffff',  // Dark mode text
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
