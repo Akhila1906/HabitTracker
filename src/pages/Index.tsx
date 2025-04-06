@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { HabitProvider } from '@/contexts/HabitContext';
@@ -15,7 +14,7 @@ const Index = () => {
   
   return (
     <HabitProvider>
-      <div className="min-h-screen flex flex-col bg-habit-background">
+      <div className="min-h-screen flex flex-col bg-background">
         <div className="container py-6">
           <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-6">
             <aside className="space-y-6">

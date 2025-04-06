@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Habit, Badge, UserProfile } from '@/types/habit';
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from 'sonner';
+import { addNotification } from '@/utils/notifications';
 
 interface HabitContextType {
   habits: Habit[];
@@ -79,6 +80,9 @@ export const HabitProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     setHabits(prev => [...prev, newHabit]);
     toast.success('Habit created successfully!');
+    
+    // Add notification for new habit
+    addNotification(`New habit created: ${habitData.name}`);
 
     // Check for first habit badge
     if (habits.length === 0) {
@@ -125,7 +129,7 @@ export const HabitProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return streak;
   };
 
-  const toggleHabitCompletion = (id: string, date: string) => {
+  const toggleHabitCompletion = (id: string, date: string) =>
     setHabits(prev => {
       return prev.map(habit => {
         if (habit.id === id) {
@@ -141,6 +145,9 @@ export const HabitProvider: React.FC<{ children: React.ReactNode }> = ({ childre
             toast.success('Great job! +10 XP', {
               icon: "🎉"
             });
+            
+            // Add notification for habit completion
+            addNotification(`Completed habit: ${habit.name}`);
           }
           
           const newStreak = calculateStreak(newCompletedDates);
@@ -148,10 +155,12 @@ export const HabitProvider: React.FC<{ children: React.ReactNode }> = ({ childre
           // Check for streak badges
           if (newStreak >= 3 && !userProfile.badges.find(b => b.id === '2')?.unlocked) {
             unlockBadge('2');
+            addNotification(`Achievement: 3-Day Streak for ${habit.name}!`);
           }
           
           if (newStreak >= 7 && !userProfile.badges.find(b => b.id === '3')?.unlocked) {
             unlockBadge('3');
+            addNotification(`Achievement: 7-Day Streak for ${habit.name}!`);
           }
           
           return {
@@ -163,7 +172,6 @@ export const HabitProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         return habit;
       });
     });
-  };
 
   const checkHabitCompletion = (id: string, date: string): boolean => {
     const habit = habits.find(h => h.id === id);
@@ -180,6 +188,9 @@ export const HabitProvider: React.FC<{ children: React.ReactNode }> = ({ childre
           icon: "🌟",
           duration: 5000
         });
+        
+        // Add notification for level up
+        addNotification(`Level Up! You're now level ${prev.level + 1}`);
         
         return {
           ...prev,

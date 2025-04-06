@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useHabits } from '@/contexts/HabitContext';
 import { Habit } from '@/types/habit';
@@ -145,7 +144,7 @@ export const HabitList: React.FC = () => {
                   <Button
                     variant={isCompletedToday ? "outline" : "default"}
                     size="sm"
-                    className={`transition-all ${isCompletedToday ? 'bg-green-100 dark:bg-green-900/20 hover:bg-green-200' : ''}`}
+                    className={`transition-all ${isCompletedToday ? 'bg-green-100 dark:bg-green-900/20 hover:bg-green-200 dark:hover:bg-green-900/30' : ''}`}
                     onClick={(e) => {
                       toggleHabitCompletion(habit.id, todayStr);
                       if (!isCompletedToday) {

@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/clerk-react";
+import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
 import Community from "./pages/Community";
 import Profile from "./pages/Profile";
@@ -12,7 +13,6 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Auth from "./pages/AuthPage";
 import Maps from "./pages/Maps";
-import { ThemeProvider } from "@/providers/ThemeProvider";
 
 const queryClient = new QueryClient();
 
@@ -20,13 +20,18 @@ const App = () => {
   const { isSignedIn } = useUser(); // Hook is valid here
 
   return (
-    <ThemeProvider defaultTheme="light">
+    <ThemeProvider 
+      attribute="class" 
+      defaultTheme="system" 
+      enableSystem={true}
+      disableTransitionOnChange
+    >
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <div className="min-h-screen bg-background flex flex-col">
+            <div className="min-h-screen flex flex-col bg-background text-foreground">
               <Navbar />
               <main className="flex-1">
                 <Routes>
