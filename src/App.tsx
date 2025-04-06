@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Auth from "./pages/AuthPage";
 import Maps from "./pages/Maps";
+import Pomodoro from "./pages/Pomodoro";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,8 @@ const App = () => {
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/login" element={<Auth />} />
                   <Route path="/map" element={<Maps />} />
+                  <Route path="/pomodoro" element={<Pomodoro />} />
+                  {/* ADD ALL CUSTOM ROUTES BELOW THE CATCH-ALL "*" ROUTE */}
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>

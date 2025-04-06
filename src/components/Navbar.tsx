@@ -17,6 +17,8 @@ import { FaRegMap } from "react-icons/fa";
 import { SignedIn, SignedOut, SignOutButton, UserButton, useUser } from '@clerk/clerk-react';
 import { ThemeToggle } from './ThemeToggle';
 import { NotificationDropdown } from './NotificationDropdown';
+import { GiTomato } from "react-icons/gi";
+
 
 interface User {
   id: string;
@@ -89,6 +91,21 @@ const Navbar = () => {
               </Link>
             </NavigationMenuItem>
             </SignedIn>
+            <NavigationMenuItem>
+              <Link to="/map">
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <FaRegMap className="mr-2 h-4 w-4" />
+                  Maps
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link to="/pomodoro">
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <GiTomato />Pomodoro
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
             {/* {isLoggedIn && user ? (
               <NavigationMenuItem>
                 <NavigationMenuTrigger>
@@ -152,6 +169,33 @@ const Navbar = () => {
             <NavigationMenuItem>
               <NotificationDropdown />
             </NavigationMenuItem>
+            {/* <NavigationMenuItem>
+              <SignedIn>
+                <UserButton/>
+              </SignedIn>
+              <SignedOut>
+                <Link to="/login">
+                  <Button variant="outline" className="w-full justify-start">
+                    Login
+                  </Button>
+                </Link>
+              </SignedOut>
+            </NavigationMenuItem> */}
+            {/* <NavigationMenuItem>
+              <Link to="/map">
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <FaRegMap className="mr-2 h-4 w-4" />
+                  Maps
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link to="/pomodoro">
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <GiTomato />Pomodoro
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem> */}
             <NavigationMenuItem>
               <SignedIn>
                 <UserButton/>
@@ -164,17 +208,6 @@ const Navbar = () => {
                 </Link>
               </SignedOut>
             </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link to="/map">
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <FaRegMap className="mr-2 h-4 w-4" />
-                  Maps
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            {/* <NavigationMenuItem> */}
-              
-            {/* </NavigationMenuItem> */}
            </NavigationMenuList>
         </NavigationMenu>
       </div>
