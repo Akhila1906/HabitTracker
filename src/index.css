@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -101,7 +100,7 @@ html, body {
 
 @layer components {
   .habit-card {
-    @apply relative flex flex-col p-5 rounded-xl bg-white dark:bg-card border border-border shadow-sm 
+    @apply relative flex flex-col p-5 rounded-xl bg-card border border-border shadow-sm 
            hover:shadow-md transition-all duration-300 overflow-hidden;
   }
   
@@ -110,7 +109,7 @@ html, body {
   }
   
   .habit-streak {
-    @apply inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-habit-background text-habit-primary;
+    @apply inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-muted text-muted-foreground;
   }
   
   .habit-badge {

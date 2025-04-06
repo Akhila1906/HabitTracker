@@ -37,7 +37,7 @@ export const Dashboard: React.FC = () => {
               <span className="text-sm font-medium">Progress</span>
               <span className="text-sm font-medium">{completionPercentage}%</span>
             </div>
-            <Progress value={completionPercentage} className="h-2 bg-habit-background" />
+            <Progress value={completionPercentage} className="h-2 bg-muted" />
           </div>
         </div>
         
@@ -51,7 +51,7 @@ export const Dashboard: React.FC = () => {
               <span className="text-sm font-medium">Progress</span>
               <span className="text-sm font-medium">{completionPercentage}%</span>
             </div>
-            <Progress value={completionPercentage} className="h-2 bg-habit-background" />
+            <Progress value={completionPercentage} className="h-2 bg-muted" />
           </div>
         </div>
         
@@ -65,7 +65,7 @@ export const Dashboard: React.FC = () => {
               <span className="text-sm font-medium">Experience</span>
               <span className="text-sm font-medium">{experiencePercentage}%</span>
             </div>
-            <Progress value={experiencePercentage} className="h-2 bg-habit-background" />
+            <Progress value={experiencePercentage} className="h-2 bg-muted" />
           </div>
         </div>
       </section>
@@ -117,7 +117,7 @@ export const Dashboard: React.FC = () => {
 const BadgeCard: React.FC<{ badge: Badge }> = ({ badge }) => {
   return (
     <div 
-      className="p-4 rounded-lg flex flex-col items-center text-center space-y-2"
+      className="p-4 rounded-lg flex flex-col items-center text-center space-y-2 bg-card"
       style={{ backgroundColor: `${badge.color}15` }} // Semi-transparent badge color
     >
       <div 

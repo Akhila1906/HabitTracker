@@ -10,17 +10,26 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
     console.log('Current theme:', theme);
+    console.log('Resolved theme:', resolvedTheme);
     const htmlElement = document.documentElement;
     console.log('Class list:', htmlElement.classList);
-  }, [theme]);
+    console.log('Data-theme attribute:', htmlElement.getAttribute('data-theme'));
+  }, [theme, resolvedTheme]);
 
   const handleThemeChange = (newTheme: string) => {
     console.log('Setting theme to:', newTheme);
     setTheme(newTheme);
+    // Force a re-render of the theme
+    const htmlElement = document.documentElement;
+    if (newTheme === 'dark') {
+      htmlElement.classList.add('dark');
+    } else {
+      htmlElement.classList.remove('dark');
+    }
   };
 
   return (
