@@ -172,6 +172,9 @@ const Navbar = () => {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
+            {/* <NavigationMenuItem> */}
+              <ThemeToggleButton></ThemeToggleButton>
+            {/* </NavigationMenuItem> */}
            </NavigationMenuList>
         </NavigationMenu>
       </div>
