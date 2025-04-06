@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState } from "react";
@@ -76,7 +75,7 @@ const Community = () => {
   };
 
   return (
-    <div className="min-h-screen bg-habit-background">
+    <div className="min-h-screen bg-background">
       <div className="container py-8">
         <header className="mb-8">
           <h1 className="text-3xl font-bold">Community Feed</h1>
@@ -85,7 +84,7 @@ const Community = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6">
           <section className="space-y-6">
-            <Card className="bg-white dark:bg-card border border-border">
+            <Card>
               <CardContent className="pt-6">
                 <div className="flex space-x-4">
                   <Avatar>
@@ -110,7 +109,7 @@ const Community = () => {
             </Card>
             
             {posts.map(post => (
-              <Card key={post.id} className="bg-white dark:bg-card border border-border">
+              <Card key={post.id}>
                 <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
                     <div className="flex items-center space-x-3">
