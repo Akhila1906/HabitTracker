@@ -98,6 +98,14 @@ html, body {
   @apply bg-background text-foreground;
 }
 
+html.light {
+  @apply bg-background-light text-black;
+}
+
+html.dark {
+  @apply bg-background-dark text-white;
+}
+
 @layer components {
   .habit-card {
     @apply relative flex flex-col p-5 rounded-xl bg-card border border-border shadow-sm 

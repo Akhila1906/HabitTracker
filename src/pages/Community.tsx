@@ -82,7 +82,12 @@ const Community = () => {
           <p className="text-muted-foreground mt-2">Connect with others on their habit journeys</p>
         </header>
         
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6">
+        <div className="bg-background text-text p-4 rounded-md shadow-md">
+          <h2 className="text-xl font-bold">Community</h2>
+          <p>Engage with the community here.</p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 mt-6">
           <section className="space-y-6">
             <Card>
               <CardContent className="pt-6">

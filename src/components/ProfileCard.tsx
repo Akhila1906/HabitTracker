@@ -66,6 +66,10 @@ export const ProfileCard: React.FC = () => {
             )}
           </div>
         </div>
+        <div className="bg-background text-text p-4 rounded-md shadow-md">
+          <h2 className="text-xl font-bold">Profile</h2>
+          <p>Manage your profile settings here.</p>
+        </div>
       </CardContent>
     </Card>
   );
