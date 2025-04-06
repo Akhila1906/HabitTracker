@@ -14,7 +14,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Home, Users, Award, LogIn, Coffee } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { FaRegMap } from "react-icons/fa";
-import { SignedIn ,SignedOut, SignOutButton,UserButton} from '@clerk/clerk-react';
+import { SignedIn, SignedOut, SignOutButton, UserButton, useUser } from '@clerk/clerk-react';
+import { ThemeToggle } from './ThemeToggle';
+import { NotificationDropdown } from './NotificationDropdown';
 
 interface User {
   id: string;
@@ -144,8 +146,13 @@ const Navbar = () => {
                 </Button>
               </NavigationMenuItem>
             )} */}
-          <NavigationMenuItem>
-            {/* <button> */}
+            <NavigationMenuItem>
+              <ThemeToggle />
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NotificationDropdown />
+            </NavigationMenuItem>
+            <NavigationMenuItem>
               <SignedIn>
                 <UserButton/>
               </SignedIn>
@@ -156,12 +163,11 @@ const Navbar = () => {
                   </Button>
                 </Link>
               </SignedOut>
-            {/* </button> */}
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link to="/map">
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                <FaRegMap className="mr-2 h-4 w-4" />
+                  <FaRegMap className="mr-2 h-4 w-4" />
                   Maps
                 </NavigationMenuLink>
               </Link>
