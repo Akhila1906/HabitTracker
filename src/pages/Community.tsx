@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ThumbsUp, MessageSquare, Share2, Award, Smile, Heart } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { FaFireAlt } from "react-icons/fa";
+import {UserButton} from '@clerk/clerk-react';
 
 const communityPosts = [
   {
@@ -61,8 +62,8 @@ const Community = () => {
       id: posts.length + 1,
       user: {
         name: "You",
-        avatar: "https://i.pravatar.cc/150?img=3",
-        level: 5,
+        avatar: "https://lh3.googleusercontent.com/a/ACg8ocJkxDSLqOfgRJcahJrvCIfqe9glVCoHeroO4J8L1xGk_cILyd36=s360-c-no",
+        level: 1,
       },
       timestamp: "Just now",
       content: newPost,
@@ -93,8 +94,8 @@ const Community = () => {
               <CardContent className="pt-6">
                 <div className="flex space-x-4">
                   <Avatar>
-                    <AvatarImage src="https://i.pravatar.cc/150?img=3" />
-                    <AvatarFallback>ME</AvatarFallback>
+                    
+                    <UserButton></UserButton>
                   </Avatar>
                   <div className="flex-1">
                     <textarea 
@@ -120,7 +121,10 @@ const Community = () => {
                     <div className="flex items-center space-x-3">
                       <Avatar>
                         <AvatarImage src={post.user.avatar} />
-                        <AvatarFallback>{post.user.name.charAt(0)}</AvatarFallback>
+                        <AvatarFallback>
+                          <img src="https://lh3.googleusercontent.com/a/ACg8ocJkxDSLqOfgRJcahJrvCIfqe9glVCoHeroO4J8L1xGk_cILyd36=s360-c-no" alt="" />
+                        </AvatarFallback>
+
                       </Avatar>
                       <div>
                         <div className="font-semibold flex items-center">

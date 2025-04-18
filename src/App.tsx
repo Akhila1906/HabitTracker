@@ -14,6 +14,9 @@ import Navbar from "./components/Navbar";
 import Auth from "./pages/AuthPage";
 import Maps from "./pages/Maps";
 import Pomodoro from "./pages/Pomodoro";
+import ChatBot from "./components/Chat";
+// import Chat from "@/components/Chat";
+
 
 const queryClient = new QueryClient();
 
@@ -37,6 +40,7 @@ const App = () => {
               <main className="flex-1">
                 <Routes>
                   <Route path="/" element={isSignedIn ? <Index /> : <Auth />} />
+                  <Route path="/AIChat" element={<ChatBot />} />
                   <Route path="/community" element={<Community />} />
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/login" element={<Auth />} />

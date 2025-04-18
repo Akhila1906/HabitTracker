@@ -18,6 +18,8 @@ import { SignedIn, SignedOut, SignOutButton, UserButton, useUser } from '@clerk/
 import { ThemeToggle } from './ThemeToggle';
 import { NotificationDropdown } from './NotificationDropdown';
 import { GiTomato } from "react-icons/gi";
+import { RiRobot2Line } from "react-icons/ri";
+
 
 
 interface User {
@@ -90,7 +92,14 @@ const Navbar = () => {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
-            </SignedIn>
+            <NavigationMenuItem>
+              <Link to="/AIChat">
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <RiRobot2Line className="mr-2 h-4 w-4" />
+                AIChat
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
             <NavigationMenuItem>
               <Link to="/map">
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -106,6 +115,22 @@ const Navbar = () => {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
+            </SignedIn>
+            {/* <NavigationMenuItem>
+              <Link to="/map">
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <FaRegMap className="mr-2 h-4 w-4" />
+                  Maps
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link to="/pomodoro">
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <GiTomato />Pomodoro
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem> */}
             {/* {isLoggedIn && user ? (
               <NavigationMenuItem>
                 <NavigationMenuTrigger>
@@ -166,9 +191,12 @@ const Navbar = () => {
             <NavigationMenuItem>
               <ThemeToggle />
             </NavigationMenuItem>
+            <SignedIn>
             <NavigationMenuItem>
               <NotificationDropdown />
             </NavigationMenuItem>
+            
+            </SignedIn>
             {/* <NavigationMenuItem>
               <SignedIn>
                 <UserButton/>
