@@ -33,7 +33,7 @@ const Auth = () => {
               <button
                 onClick={() => setIsSignUp(false)}
                 className={`px-4 py-2 rounded-md ${
-                  isSignUp ?  'bg-gray-200' : 'bg-black text-white'
+                  isSignUp ?  'bg-gray-200' : 'bg-black text-white/100'
                 }`}
               >
                 Sign In
@@ -41,7 +41,7 @@ const Auth = () => {
               <button
                 onClick={() => setIsSignUp(true)}
                 className={`px-4 py-2 rounded-md ${
-                  isSignUp ? 'bg-black text-white' : 'bg-gray-200'
+                  isSignUp ? 'bg-black text-white/100' : 'bg-gray-200'
                 }`}
               >
                 Sign Up
